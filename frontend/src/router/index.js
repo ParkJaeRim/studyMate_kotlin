@@ -21,8 +21,12 @@ const routes = [
   {
     path: '/kakaologin',
     name: 'klogin',
-
     component: () => import('../views/kakaoLogin.vue'),
+  },
+  {
+    path: '/signUp',
+    name: 'signUp',
+    component: () => import('../views/signUp.vue'),
   },
 ];
 
