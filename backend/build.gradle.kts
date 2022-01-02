@@ -31,6 +31,7 @@ dependencies {
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 	implementation ("com.google.code.gson:gson:2.6.2")
 	testImplementation("org.springframework.security:spring-security-test")
+	testImplementation ("org.junit.jupiter:junit-jupiter:5.5.2")
 }
 
 

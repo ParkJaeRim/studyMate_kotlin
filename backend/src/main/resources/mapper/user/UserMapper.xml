@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studyMate.mybatis.mapper.user.UserMapper">
+    <resultMap id="userMap" type="com.studyMate.mybatis.values.user.UserVo">
+    </resultMap>
+
+    <select id="findByEmail" resultMap="userMap" parameterType="Map">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+    </select>
+
+    <select id="findByEmailAndPassword" resultMap="userMap" parameterType="Map">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+          AND password = #{password}
+    </select>
+
+    <insert id="save" parameterType="com.studyMate.domain.user.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO user (real_name,
+                          nickname,
+                          password,
+                          email,
+                          introduction,
+                          profile_image,
+                          date_created)
+        VALUES (#{realName},
+                #{nickname},
+                #{password},
+                #{email},
+                #{introduction},
+                #{profileImage},
+                now(3))
+    </insert>
+</mapper>

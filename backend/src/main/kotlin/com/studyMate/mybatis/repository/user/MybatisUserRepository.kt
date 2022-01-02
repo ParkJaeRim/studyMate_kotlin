@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository
 class MybatisUserRepository(
     private val userMapper: UserMapper
 ) : UserRepository {
-    override fun findAll(): List<User> = userMapper.findAll().map{ userVo -> userVo.toEntity() }
+    override fun findByEmail(email: String): User? = userMapper.findByEmail(email)?.toEntity()
+    override fun findByEmailAndPassword(email: String, password: String): User? = userMapper.findByEmailAndPassword(email, password)?.toEntity()
+    override fun save(user: User) = userMapper.save(user)
 }

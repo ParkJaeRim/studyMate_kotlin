@@ -12,8 +12,7 @@ import java.net.URL
 @Service
 class KakaoLoginService {
 
-
-    fun getAccessToken(authorizeCode: String): String {
+    fun getAccessToken(authorizeCode: String, redirectName:String): String {
         var accessToken = ""
         var refreshToken = ""
         val requestURL = "https://kauth.kakao.com/oauth/token"
@@ -26,7 +25,7 @@ class KakaoLoginService {
 
             val bw = BufferedWriter(OutputStreamWriter(connection.outputStream))
 
-            var sb = StringBuilder("grant_type=authorization_code&client_id=d8a07bcf4f4992d4a841f569e9e68f57&redirect_uri=http://localhost:3000/kakaologin&code=$authorizeCode")
+            var sb = StringBuilder("grant_type=authorization_code&client_id=d8a07bcf4f4992d4a841f569e9e68f57&redirect_uri=http://localhost:3000/$redirectName&code=$authorizeCode")
             bw.write(sb.toString())
             bw.flush()
 
