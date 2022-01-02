@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class StudyController(private val studyRepository: MybatisStudyRepository) {
     @GetMapping("/test")
-    fun test():  List<Study> {
-        val result : List<Study> = studyRepository.findAll()
-        println(result)
-        return result;
+    fun test(): String {
+        val result: List<Study> = studyRepository.findAll()
+        return result[0].category.getType()
     }
 }
